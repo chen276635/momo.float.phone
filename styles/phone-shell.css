@@ -1056,7 +1056,7 @@
 
 /* ── Mobile responsive ── */
 
-@media (max-width: 500px) and (hover: none) and (pointer: coarse) {
+@media (max-width: 768px) {
 
   /* 用户在设置里显式开启「显示系统状态栏」且运行时不在全屏时，控制器才会挂
      data-pwa-display-mode 标记（见 pwa-manifest-injector）：此时所有 App 共用系统
@@ -1454,4 +1454,36 @@
 }
 .folder-dots .dot.active {
   background: color-mix(in srgb, var(--c-home-label, #ffffff) 85%, transparent);
+}
+
+/* =========================================
+   强制移动端全屏补丁 (Overrides)
+   ========================================= */
+@media (max-width: 768px) {
+  .phone-shell-wrap {
+    margin-top: 0 !important;
+    transform: none !important;
+    transition: none !important;
+    width: 100vw !important;
+  }
+  
+  .phone-shell-wrap .phone-case,
+  .phone-shell-wrap .phone-frame {
+    display: contents !important;
+  }
+  
+  .phone-shell-wrap .phone-case::before,
+  .phone-shell-wrap .phone-case::after,
+  .phone-shell-wrap .phone-frame::before,
+  .phone-shell-wrap .phone-frame::after {
+    display: none !important;
+  }
+  
+  .phone-shell {
+    width: 100vw !important;
+    height: 100lvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
 }
